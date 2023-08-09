@@ -1,0 +1,234 @@
+$sheet-width-xl: 1140px;
+$sheet-width-lg: 940px;
+$sheet-width-md: 720px;
+$sheet-width-sm: 540px;
+$sheet-width-xs: 340px;
+
+$font-main: "Open Sans",sans-serif;
+$font-headers: "Oswald", sans-serif;
+$font-h1: "PT Sans", sans-serif;
+
+$main-background-color: #fff;
+$item-background-color: #fee856;
+
+$font-color-headers: #4535d5;
+$font-color-text: #26252b;
+
+$font-size-h1: 3.7rem;
+$font-size-h2: 1.875rem;
+$font-size-h3: 1.875rem;
+
+$font-style-text: italic;
+
+$header-height: 74px;
+$footer-height: 120px;
+
+@mixin screen-width($media) {
+  @if $media == xs {
+    @media only screen and (max-width: 371px) { @content; }
+  }
+  @if $media == sm {
+    @media only screen and (min-width: 372px) and (max-width: 575px) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: 576px) and (max-width: 768px) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (min-width: 769px) and (max-width: 991px) { @content; }
+  }
+  @else if $media == xl{
+    @media only screen and (min-width: 992px){ @content; }
+  }
+}
+
+
+a{
+  text-decoration: none;
+}
+
+.a-center{
+  text-align: center;
+}
+
+.a-left{
+  text-align: left;
+}
+
+.dynamic-width{
+  @include screen-width(xs){
+    width: $sheet-width-xs !important;
+  }
+  @include screen-width(sm){
+    width: $sheet-width-sm !important;
+  }
+  @include screen-width(md){
+    width: $sheet-width-md !important;
+  }
+  @include screen-width(lg){
+    width: $sheet-width-lg !important;
+  }
+  @include screen-width(xl){
+    width: $sheet-width-xl !important;
+  }
+  //min-width: $sheet-width-xs;
+  margin: 0 auto;
+}
+
+.dynamic-height{
+
+  @include screen-width(sm){
+    min-height: 1050px;
+  }
+  @include screen-width(md){
+    min-height: 1050px;
+  }
+  @include screen-width(lg){
+    min-height: 710px;
+  }
+  @include screen-width(xl){
+    min-height: 710px;
+  }
+}
+
+.repeater{
+  @include screen-width(xs){
+    grid-template-columns: repeat(1, 90%);
+  }
+  @include screen-width(sm){
+    grid-template-columns: repeat(2, calc(55% - 15px));
+  }
+  @include screen-width(md){
+    grid-template-columns: repeat(2, calc(50% - 20px));
+  }
+  @include screen-width(lg){
+    grid-template-columns: repeat(3, calc(35% - 20px));
+  }
+  @include screen-width(xl){
+    grid-template-columns: repeat(3, calc(33.333333% - 20px));
+  }
+}
+
+h3{
+  font-family: $font-headers;
+  line-height: 0.5;
+  font-size: $font-size-h3;
+  font-weight: 700;
+  text-transform: uppercase;
+  word-wrap: break-word;
+  position: relative;
+
+  a{
+    text-decoration: none;
+    color: inherit;
+    text-transform: inherit;
+  }
+}
+
+.page-body{
+  background-color: $main-background-color;
+  font-family: $font-main;
+  color: $font-color-text;
+  height: auto;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+.page-header{
+  background-color: $main-background-color;
+}
+
+
+.page-section{
+  background-image: url(../images/bg.jpg);
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  background-size: cover;
+  background-position: 50% 50%;
+
+}
+
+.section{
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+
+  h1{
+    color: $font-color-headers;
+    font-family: $font-h1;
+    text-transform: none;
+    font-weight: 700;
+    font-size: $font-size-h1;
+    margin: 60px auto 0;
+  }
+
+  .spacer{
+    margin: 62px 0 0;
+    align-self: center;
+  }
+}
+
+.items{
+  display: grid;
+  row-gap: 30px;
+  column-gap: 30px;
+
+  .item{
+    color: $font-color-text;
+    background-color: $item-background-color;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 25px;
+
+      span{
+        height: 64px;
+        width: 64px;
+        background-image: none;
+        margin: 0 auto;
+        border: solid $font-color-headers 1px;
+      }
+
+      h2{
+        color: $font-color-headers;
+        font-family: $font-headers;
+        font-size: $font-size-h2;
+        font-weight: 300;
+        line-height: 1.2;
+        margin: 30px 0 0;
+        text-transform: uppercase;
+      }
+
+      p{
+        font-style: $font-style-text;
+        margin: 35px 0 0;
+      }
+
+      a{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: $font-color-headers;
+        border-bottom: solid $font-color-headers 2px;
+
+      }
+
+      a:hover{
+        border-bottom: none;
+      }
+  }
+
+}
+
+.page-footer{
+  background-color: $main-background-color;
+  min-height: $footer-height;
+
+  .footer{
+    padding-top: 50px;
+
+  }
+}
